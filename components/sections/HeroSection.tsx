@@ -10,16 +10,12 @@ export function HeroSection() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
     <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden bg-[#0a0a0a]">
-      {/* Parallax background */}
-      <motion.div
-        style={{ y: imgY }}
-        className="absolute inset-0 scale-110"
-      >
+      {/* Parallax background image only */}
+      <motion.div style={{ y: imgY }} className="absolute inset-0 scale-110">
         <Image
           src="/images/manufacturing/hero-bg.jpg"
           alt="Novo Industries Apex Smoker"
@@ -29,15 +25,12 @@ export function HeroSection() {
           sizes="100vw"
           quality={90}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/85" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/85" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
       </motion.div>
 
-      {/* Content */}
-      <motion.div
-        style={{ y: textY, opacity }}
-        className="absolute inset-0 z-10 flex flex-col justify-end pb-[10vh]"
-      >
+      {/* Content — pinned to bottom, NO scroll transform so layout is stable */}
+      <motion.div style={{ opacity }} className="absolute bottom-0 left-0 right-0 z-10 pb-[8vh]">
         <div className="container-novo">
           {/* Eyebrow */}
           <motion.div
@@ -103,7 +96,7 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.3 }}
-            className="mt-16 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-8"
+            className="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-8"
           >
             {[
               { value: "2017", label: "Est." },
@@ -132,9 +125,6 @@ export function HeroSection() {
           transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
           className="w-px h-12 bg-white/30 origin-top"
         />
-        <span className="text-[10px] text-white/25 tracking-[0.2em] uppercase writing-mode-vertical rotate-90 mt-2">
-          scroll
-        </span>
       </motion.div>
     </section>
   );
