@@ -14,7 +14,7 @@ export function HeroSection() {
 
   return (
     <section ref={ref} className="relative h-screen min-h-[700px] overflow-hidden bg-[#0a0a0a]">
-      {/* Parallax background image only */}
+      {/* Parallax background */}
       <motion.div style={{ y: imgY }} className="absolute inset-0 scale-110">
         <Image
           src="/images/manufacturing/hero-bg.jpg"
@@ -29,10 +29,10 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
       </motion.div>
 
-      {/* Content — constrained below navbar, content pushed to bottom */}
-      <motion.div style={{ opacity }} className="absolute top-[72px] bottom-0 left-0 right-0 z-10 flex flex-col justify-end pb-[8vh]">
-        <div className="container-novo">
-          {/* Eyebrow */}
+      {/* Content — starts below navbar, description/CTAs pinned to bottom */}
+      <motion.div style={{ opacity }} className="absolute inset-0 z-10 flex flex-col pt-[90px] pb-[6vh]">
+        <div className="container-novo pt-6">
+          {/* Eyebrow — just below navbar */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ export function HeroSection() {
           </motion.div>
 
           {/* Headline */}
-          <div className="overflow-hidden mb-6">
+          <div className="overflow-hidden">
             <motion.h1
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -60,20 +60,21 @@ export function HeroSection() {
               to Last.
             </motion.h1>
           </div>
+        </div>
 
-          {/* Sub + CTAs */}
+        {/* Description + CTAs + Stats — pushed to bottom */}
+        <div className="mt-auto container-novo">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-10"
+            className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
           >
             <p className="text-[17px] text-white/50 max-w-sm leading-relaxed font-light">
               Premium handcrafted smokers and grills.
               <br />
               Made in India. Built for generations.
             </p>
-
             <div className="flex items-center gap-4 sm:ml-auto">
               <Link
                 href="/products"
@@ -91,12 +92,11 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Stats bar */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.3 }}
-            className="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-8"
+            className="mt-10 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-8"
           >
             {[
               { value: "2017", label: "Est." },
@@ -111,20 +111,6 @@ export function HeroSection() {
             ))}
           </motion.div>
         </div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-8 right-8 lg:right-12 z-10 flex flex-col items-center gap-2"
-      >
-        <motion.div
-          animate={{ scaleY: [0, 1, 0] }}
-          transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-          className="w-px h-12 bg-white/30 origin-top"
-        />
       </motion.div>
     </section>
   );
