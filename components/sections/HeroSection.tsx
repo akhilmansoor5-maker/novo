@@ -36,7 +36,7 @@ export function HeroSection() {
       {/* Content */}
       <motion.div
         style={{ y: textY, opacity }}
-        className="relative z-10 h-full flex flex-col justify-end pb-[10vh]"
+        className="relative z-10 h-full flex flex-col justify-end pb-[10vh] pt-20"
       >
         <div className="container-novo">
           {/* Eyebrow */}

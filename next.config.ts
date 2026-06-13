@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
   basePath: "/novo",
   assetPrefix: "/novo/",
   images: {
-    unoptimized: true,
+    loader: "custom",
+    loaderFile: "./imageLoader.js",
     remotePatterns: [
       { protocol: "https", hostname: "static.wixstatic.com" },
     ],
