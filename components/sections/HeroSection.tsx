@@ -29,8 +29,8 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
       </motion.div>
 
-      {/* Content — pinned to bottom, NO scroll transform so layout is stable */}
-      <motion.div style={{ opacity }} className="absolute bottom-0 left-0 right-0 z-10 pb-[8vh]">
+      {/* Content — constrained below navbar, content pushed to bottom */}
+      <motion.div style={{ opacity }} className="absolute top-[72px] bottom-0 left-0 right-0 z-10 flex flex-col justify-end pb-[8vh]">
         <div className="container-novo">
           {/* Eyebrow */}
           <motion.div
